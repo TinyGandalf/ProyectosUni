@@ -1,0 +1,93 @@
+{
+    // Based on: https://gist.github.com/pakLebah/dab98067e9a388a3a8d2f5c0b44a7d3f#file-tasks-json
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Pascal: Run code",
+            "type": "shell",
+            "dependsOn": "Pascal: Build Debug",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "command": "${fileDirname}/${fileBasenameNoExtension}.exe",
+            "presentation": {
+                "focus": true
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Pascal: Build Debug",
+            "type": "shell",
+            "group": "build",
+            "command": "E:\\Programas\\x64\\Lazarus\\fpc\\3.2.2\\bin\\x86_64-win64\\fpc.exe",
+            "args": [
+                "${file}",
+                "-Px86_64",
+                "-Mfpc",
+                "-CroOti",
+                "-O-",
+                "-g",
+                "-B",
+                "-v",
+                "-gw",
+                "-godwarfsets"
+            ],
+            "presentation": {
+                "focus": true
+            },
+            "problemMatcher": {
+                "owner": "objectpascal",
+                "fileLocation": [
+                    "relative",
+                    "${workspaceFolder}"
+                ],
+                "pattern": {
+                    "kind": "location",
+                    "regexp": "^(.*)\\((\\d.*),(\\d.*)\\) (Warning|Error|Fatal): (.*)$",
+                    "file": 1,
+                    "line": 2,
+                    "column": 3,
+                    "severity": 4,
+                    "message": 5,
+                    "loop": true
+                }
+            }
+        },
+        {
+            "label": "Pascal: Build Release",
+            "type": "shell",
+            "command": "E:\\Programas\\x64\\Lazarus\\fpc\\3.2.2\\bin\\x86_64-win64\\fpc.exe",
+            "args": [
+                "${file}",
+                "-Px86_64",
+                "-Mfpc",
+                "-CX",
+                "-O3",
+                "-XXs",
+                "-B",
+                "-v"
+            ],
+            "presentation": {
+                "focus": true
+            },
+            "problemMatcher": {
+                "owner": "objectpascal",
+                "fileLocation": [
+                    "relative",
+                    "${workspaceFolder}"
+                ],
+                "pattern": {
+                    "kind": "location",
+                    "regexp": "^(.*)\\((\\d.*),(\\d.*)\\) (Warning|Error|Fatal): (.*)$",
+                    "file": 1,
+                    "line": 2,
+                    "column": 3,
+                    "severity": 4,
+                    "message": 5,
+                    "loop": true
+                }
+            }
+        }
+    ]
+}
