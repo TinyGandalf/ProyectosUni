@@ -1,5 +1,5 @@
 // DeboTomarTest
-// Aplicación que ayuda al usuario a determinar si debería realizarce
+// Aplicación que ayuda al usuario a determinar si debería realizarse
 // un test de COVID-19 según sus síntomas.
 //
 // Datos de entrada:
@@ -14,7 +14,9 @@
 //     shouldTakeTest: Boolean = Si el usuario debe tomar el test o no.
 
 program DeboTomarTest;
-uses SysUtils;
+uses
+    SysUtils,    // TryStrToFloat
+    Windows;    // SetConsoleOutputCP
 
 // Le pide al usuario que ingrese un valor real.
 // Si la entrada es inválida, se lo vuelve a pedir hasta que coopere.
@@ -31,7 +33,7 @@ begin
         validResponse := TryStrToFloat(response, AskForReal);
 
         if not validResponse then
-            write(#9'Entrada incorrecta. Ingrese un numero valido (ej.: 37,5): ');
+            write(#9'Entrada incorrecta. Ingrese un número valido (ej.: 37,5): ');
     until validResponse;
 end;
 
@@ -50,7 +52,7 @@ begin
         validResponse := (response = 'S') or (response = 's') or (response = 'N') or (response = 'n');
 
         if not validResponse then
-            write(#9'Opcion incorrecta. Escriba S para Si o N para No: ');
+            write(#9'Opción incorrecta. Escriba S para Si o N para No: ');
     until validResponse;
 
     AskForBoolean := (response = 'S') or (response = 's');
@@ -69,22 +71,24 @@ var
 
     shouldTakeTest: boolean;
 begin
-    writeln('Bienvenido.');
+    SetConsoleOutputCP(CP_UTF8);    // Para mostrar acentos y simbolos especiales (Win10)
+
+    writeln('¡Bienvenido!');
     writeln('Responda las siguientes preguntas para determinar si debe realizarse un test de COVID-19:');
 
     temp          := AskForReal('Indique su temperatura corporal');
-    soreThroat    := AskForBoolean('Le duele la garganta?');
-    breathingDiff := AskForBoolean('Tiene dificultad para respirar?');
-    lacksSmell    := AskForBoolean('Tiene falta el olfato?');
-    lacksTaste    := AskForBoolean('Tiene falta el gusto?');
-    coughing      := AskForBoolean('Tiene tos?');
+    soreThroat    := AskForBoolean('¿Le duele la garganta?');
+    breathingDiff := AskForBoolean('¿Tiene dificultad para respirar?');
+    lacksSmell    := AskForBoolean('¿Tiene falta el olfato?');
+    lacksTaste    := AskForBoolean('¿Tiene falta el gusto?');
+    coughing      := AskForBoolean('¿Tiene tos?');
     
     shouldTakeTest := (temp >= feverTemp) and (soreThroat or breathingDiff or lacksSmell or lacksTaste or coughing);
 
     if shouldTakeTest then
-        writeln(#7#13#10'Usted deberia realizarse un test de COVID-19.')
+        writeln(#7#13#10'Usted debería realizarse un test de COVID-19.')
     else
-        writeln(#7#13#10'Usted NO deberia realizarse un test de COVID-19.');
+        writeln(#7#13#10'Usted NO debería realizarse un test de COVID-19.');
 
     readln();
 end.
