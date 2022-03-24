@@ -40,7 +40,7 @@
                 "owner": "objectpascal",
                 "fileLocation": [
                     "relative",
-                    "${workspaceFolder}"
+                    "${fileDirname}"
                 ],
                 "pattern": {
                     "kind": "location",
