@@ -3,7 +3,7 @@
 // un test de COVID-19 según sus síntomas.
 //
 // Datos de entrada:
-//     temp : Real = Temperatura corporal
+//     temp: Real = Temperatura corporal
 //     soreThroat: Boolean = ¿Sufre dolor de garganta?
 //     breathingDiff: Boolean = ¿Sufre dificultad respiratoria?
 //     lacksSmell: Boolean = ¿Sufre falta de olfato?
@@ -15,7 +15,7 @@
 
 program DeboTomarTest;
 uses
-    SysUtils,    // TryStrToFloat
+    SysUtils,   // TryStrToFloat
     Windows;    // SetConsoleOutputCP
 
 // Le pide al usuario que ingrese un valor real.
