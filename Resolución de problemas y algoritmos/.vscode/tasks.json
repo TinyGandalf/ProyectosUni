@@ -44,7 +44,7 @@
                 ],
                 "pattern": {
                     "kind": "location",
-                    "regexp": "^(.*)\\((\\d.*),(\\d.*)\\) (Warning|Error|Fatal): (.*)$",
+                    "regexp": "^(.*)\\((\\d.*),(\\d.*)\\) (Warning|Error|Fatal|Note): (.*)$",
                     "file": 1,
                     "line": 2,
                     "column": 3,
