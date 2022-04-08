@@ -33,7 +33,7 @@ begin
         validResponse := TryStrToFloat(response, AskForReal);
 
         if not validResponse then
-            write(#9'Entrada incorrecta. Ingrese un número valido (ej.: 37,5): ');
+            write(#9'Entrada incorrecta. Ingrese un número válido (ej.: 37,5): ');
     until validResponse;
 end;
 
