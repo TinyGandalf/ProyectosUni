@@ -12,6 +12,7 @@
             },
             "command": "${fileDirname}/${fileBasenameNoExtension}.exe",
             "presentation": {
+                "close": true,
                 "focus": true
             },
             "problemMatcher": []

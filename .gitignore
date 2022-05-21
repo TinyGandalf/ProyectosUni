@@ -1,2 +1,9 @@
+# Archivos compilados
 **/*.o
 **/*.exe
+**/*.compiled
+
+# Salidas de Lazarus
+**/*.lpi
+**/*.lps
+**/backup
